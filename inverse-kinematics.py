@@ -7,9 +7,6 @@
 import math
 import numpy
 
-from transformation_matrix import *
-from get_position import *
-
 # Forward Kinematics
 def get_FK(theta):
 	l1 = 0.3
