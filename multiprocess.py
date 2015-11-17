@@ -14,7 +14,7 @@ import cv2
 import numpy as np
 import csv
 
-L = 40
+L = 5
 N = 4
 dd = diff_drive
 
