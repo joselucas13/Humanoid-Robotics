@@ -20,7 +20,7 @@ import csv
 
 dd = common
 ref = dd.ServoPosition()
-r = ach.Channel(DYNAMIXEL_CHANNEL)
+r = ach.Channel(dd.DYNAMIXEL_CHANNEL)
 r.flush()
 
 def rad2tick(r):
@@ -49,8 +49,8 @@ def set_position(ser, dev_id, angle):
 	write_register(ser, dev_id, 0x1e, rad2tick(angle))
 
 
-high_angle = 120.0 * (math.pi/180.0)
-low_angle = -120.0 * (math.pi/180.0)
+high_value = 120.0 * (math.pi/180.0)
+low_value = -120.0 * (math.pi/180.0)
 
 def wait_angles():
 	dynamixel = serial.Serial('/dev/ttyUSB0', baudrate=1000000)
