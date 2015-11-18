@@ -52,26 +52,26 @@ def set_position(ser, dev_id, angle):
 high_value = 120.0 * (math.pi/180.0)
 low_value = -120.0 * (math.pi/180.0)
 
-def wait_angles():
-	dynamixel = serial.Serial('/dev/ttyUSB0', baudrate=1000000)
-	while(True):
-		[status, framesize] = r.get(ref, wait=True, last=True)
-    		if status == ach.ACH_OK or status == ach.ACH_MISSED_FRAME or status == ach.ACH_STALE_FRAMES:
-			
-			if (ref.pos[dd.POS_x] > high_value):
-				ref.pos[dd.POS_x] = high_value
-			if (ref.pos[dd.POS_x] < low_value):
-				ref.pos[dd.POS_x] = low_value    		
-			set_position(dynamixel,1,ref.pos[dd.POS_x])
+dynamixel = serial.Serial('/dev/ttyUSB0', baudrate=1000000)
 
-			if (ref.pos[dd.POS_y] > high_value):
-				ref.pos[dd.POS_y] = high_value
-			if (ref.pos[dd.POS_y] < low_value):
-				ref.pos[dd.POS_y] = low_value
-			set_position(dynamixel,2,ref.pos[dd.POS_y])
+while(True):
+	[status, framesize] = r.get(ref, wait=True, last=True)
+    	if status == ach.ACH_OK or status == ach.ACH_MISSED_FRAME or status == ach.ACH_STALE_FRAMES:
+		
+		if (ref.pos[dd.POS_x] > high_value):
+			ref.pos[dd.POS_x] = high_value
+		if (ref.pos[dd.POS_x] < low_value):
+			ref.pos[dd.POS_x] = low_value    		
+		set_position(dynamixel,1,ref.pos[dd.POS_x])
 
-    		else:
-        		raise ach.AchException( v.result_string(status) )
+		if (ref.pos[dd.POS_y] > high_value):
+			ref.pos[dd.POS_y] = high_value
+		if (ref.pos[dd.POS_y] < low_value):
+			ref.pos[dd.POS_y] = low_value
+		set_position(dynamixel,2,ref.pos[dd.POS_y])
+
+    	else:
+        	raise ach.AchException( v.result_string(status) )
 		
 
 #if (len(sys.argv) < 2):
