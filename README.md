@@ -1,3 +1,3 @@
 # Humanoid-Robotics
 
-Youtube link: 
+Youtube link: https://youtu.be/uKy4VZQn5c0 
